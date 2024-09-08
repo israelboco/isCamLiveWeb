@@ -1,0 +1,17 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+    <meta charset="UTF-8">
+    <title>CamLive - Abonnement</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <h1>Abonnement à CamLive</h1>
+    <form action="/abonnement" method="post">
+        <label for="email">Email :</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+        <button type="submit">S'abonner</button>
+    </form>
+</body>
+</html>
