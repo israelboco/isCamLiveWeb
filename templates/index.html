@@ -1,0 +1,282 @@
+<!DOCTYPE html>
+<html class="wide wow-animation" lang="en">
+  <head>
+    <title>CamLive - Gestion Automatique des Caméras</title>
+    <meta name="format-detection" content="telephone=no">
+    <meta name="viewport" content="width=device-width, height=device-height, initial-scale=1.0, maximum-scale=1.0, user-scalable=0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta charset="utf-8">
+    <link rel="icon" href="{{ url_for('static', filename='images/favicon.ico') }}" type="image/x-icon">
+    <!-- Stylesheets -->
+    <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Poppins:300,400,500">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/bootstrap.css') }}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <!-- Bootstrap CSS (or any other framework you prefer) -->
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">  
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/fonts.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+  <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.10.2/dist/umd/popper.min.js"></script>
+  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+  </head>
+  <body>
+    <!-- Header -->
+    <header>
+      <nav>
+        <ul>
+          <li><a href="#">Accueil</a></li>
+          <li><a href="#features">Fonctionnalités</a></li>
+          <li><a href="#pricing">Tarif</a></li>
+          <li><a href="#testimonials">Témoignages</a></li>
+          <li><a href="#contact">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
+
+    <!-- Main Content -->
+    <main>
+      <!-- Introduction -->
+      <section class="section section-md bg-default section-top-image">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6">
+              <h1>CamLive - Gestion Automatique des Caméras</h1>
+              <p>Un logiciel autonome de capture de flux vidéo pour les événements et la surveillance.</p>
+              <button class="btn btn-primary">En savoir plus</button>
+            </div>
+            <div class="col-md-6">
+              <!-- Bootstrap Carousel -->
+              <div id="softwareCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                  <li data-target="#softwareCarousel" data-slide-to="0" class="active"></li>
+                  <li data-target="#softwareCarousel" data-slide-to="1"></li>
+                  <li data-target="#softwareCarousel" data-slide-to="2"></li>
+                  <li data-target="#softwareCarousel" data-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner">
+                  <div class="carousel-item active">
+                    <img src="{{ url_for('static', filename='images/image1.jpg') }}" class="d-block w-100" alt="Feature 1">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='images/image2.jpg') }}" class="d-block w-100" alt="Feature 2">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='images/image3.jpg') }}" class="d-block w-100" alt="Feature 3">
+                  </div>
+                  <div class="carousel-item">
+                    <img src="{{ url_for('static', filename='images/image4.jpg') }}" class="d-block w-100" alt="Feature 4">
+                  </div>
+                </div>
+                <a class="carousel-control-prev" href="#softwareCarousel" role="button" data-slide="prev">
+                  <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Précédent</span>
+                </a>
+                <a class="carousel-control-next" href="#softwareCarousel" role="button" data-slide="next">
+                  <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                  <span class="sr-only">Suivant</span>
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Features -->
+      <section id="features" class="section section-md bg-default">
+        <div class="container">
+          <h2>Fonctionnalités</h2>
+          <div class="row row-30 justify-content-center">
+            <div class="col-sm-6 col-lg-4 wow fadeInRight" data-wow-delay="0s">
+              <article class="box-icon-ruby">
+                <div class="unit box-icon-ruby-body flex-column flex-md-row text-md-left flex-lg-column align-items-center text-lg-center flex-xl-row text-xl-left">
+                  <div class="unit-left">
+                    <div class="box-icon-ruby-icon linearicons-leaf"></div>
+                  </div>
+                  <div class="unit-body">
+                    <h4 class="box-icon-ruby-title"><a href="#">Connexion Multi-Caméras</a></h4>
+                    <p>Connectez plusieurs caméras simultanément et créez des sessions personnalisées par utilisateur pour préconfigurer les traitements selon vos besoins.</p>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-sm-6 col-lg-4 wow fadeInRight" data-wow-delay=".1s">
+              <article class="box-icon-ruby">
+                <div class="unit box-icon-ruby-body flex-column flex-md-row text-md-left flex-lg-column align-items-center text-lg-center flex-xl-row text-xl-left">
+                  <div class="unit-left">
+                    <div class="box-icon-ruby-icon linearicons-shovel"></div>
+                  </div>
+                  <div class="unit-body">
+                    <h4 class="box-icon-ruby-title"><a href="#">Traitement Intelligent des Captures</a></h4>
+                    <p>Profitez de la puissance de l'IA pour des fonctionnalités avancées : détection d'objets, détection et identification faciale, notifications en temps réel.</p>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-sm-6 col-lg-4 wow fadeInRight" data-wow-delay=".2s">
+              <article class="box-icon-ruby">
+                <div class="unit box-icon-ruby-body flex-column flex-md-row text-md-left flex-lg-column align-items-center text-lg-center flex-xl-row text-xl-left">
+                  <div class="unit-left">
+                    <div class="box-icon-ruby-icon linearicons-leaf"></div>
+                  </div>
+                  <div class="unit-body">
+                    <h4 class="box-icon-ruby-title"><a href="#">Diffusion Sécurisée des Vidéos</a></h4>
+                    <p>Diffusez vos flux vidéo sur des domaines sécurisés ou non, avec des options de sécurité avancées telles que la protection par token.</p>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- Pricing -->
+      <section id="pricing" class="section section-md bg-default">
+        <div class="container">
+          <h2>Tarif</h2>
+          <div class="row">
+            <div class="col-md-4">
+              <div class="pricing-card">
+                <h3>Basic</h3>
+                <p class="price">$50 / mois</p>
+                <ul>
+                  <li>Recherche d'objet</li>
+                  <li>Recherche facial</li>
+                  <li>Diffusion de la cam principale</li>
+                  <li>Nombre de caméra: 5</li>
+                  <li>Nombre de sessions par utilisateur: 3</li>
+                </ul>
+                <button class="btn btn-primary">S'abonner</button>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="pricing-card">
+                <h3>Pro</h3>
+                <p class="price">$70 / mois</p>
+                <ul>
+                  <li>Recherche d'objet</li>
+                  <li>Recherche facial</li>
+                  <li>Diffusion de la cam principale sécurisée par token</li>
+                  <li>Nombre de caméra: 10</li>
+                  <li>Nombre de sessions par utilisateur: 10</li>
+                </ul>
+                <button class="btn btn-primary">S'abonner</button>
+              </div>
+            </div>
+            <div class="col-md-4">
+              <div class="pricing-card">
+                <h3>Entreprise</h3>
+                <p class="price">$100</p>
+                <ul>
+                  <li>Les fonctionnalités existantes et plus sous contrat</li>
+                </ul>
+                <button class="btn btn-primary">Contactez-nous</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+
+     <!-- Testimonials -->
+    <section id="testimonials" class="section section-md bg-default">
+      <div class="container">
+        <h2>Témoignages</h2>
+        <div class="row row-30 justify-content-center">
+          <div class="col-md-6 col-lg-4 col-xl-4 wow fadeInRight" data-wow-delay="0s">
+            <article class="team-classic">
+              <a class="team-classic-figure" href="#">
+                <img src="{{ url_for('static', filename='images/team-1-370x406.jpg') }}" alt="Sarah Dupont" width="370" height="406"/>
+              </a>
+              <div class="team-classic-caption">
+                <h5 class="team-classic-name"><a href="#">Sarah Dupont</a></h5>
+                <p class="team-classic-status">Responsable Sécurité, TechSecure</p>
+                <p>"Grâce à CamLive, nous avons pu automatiser la surveillance de nos sites avec une précision inégalée. La détection d'anomalies et les alertes en temps réel nous permettent de réagir instantanément."</p>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4 col-xl-4 wow fadeInRight" data-wow-delay=".1s">
+            <article class="team-classic">
+              <a class="team-classic-figure" href="#">
+                <img src="{{ url_for('static', filename='images/team-2-370x406.jpg') }}" alt="Jean Martin" width="370" height="406"/>
+              </a>
+              <div class="team-classic-caption">
+                <h5 class="team-classic-name"><a href="#">Jean Martin</a></h5>
+                <p class="team-classic-status">Directeur des Opérations, EventPro</p>
+                <p>"La gestion multi-caméras de CamLive nous a permis de contrôler efficacement les flux de nos événements, garantissant une sécurité optimale tout en offrant des fonctionnalités d'analyse avancée."</p>
+              </div>
+            </article>
+          </div>
+          <div class="col-md-6 col-lg-4 col-xl-4 wow fadeInRight" data-wow-delay=".2s">
+            <article class="team-classic">
+              <a class="team-classic-figure" href="#">
+                <img src="{{ url_for('static', filename='images/team-3-370x406.jpg') }}" alt="Laura Moreau" width="370" height="406"/>
+              </a>
+              <div class="team-classic-caption">
+                <h5 class="team-classic-name"><a href="#">Laura Moreau</a></h5>
+                <p class="team-classic-status">Chef de Projet, SmartCity Solutions</p>
+                <p>"L'intégration de la réalité augmentée et la détection des foules dans CamLive nous ont aidés à améliorer la gestion des espaces publics. Les fonctionnalités de sécurité avancées offrent une tranquillité d'esprit inestimable."</p>
+              </div>
+            </article>
+          </div>
+        </div>
+      </div>
+    </section>
+    <!-- Contact -->
+    <section id="contact" class="section section-md bg-default">
+      <div class="container">
+        <h2>Contactez-nous</h2>
+        <form action="mailto:support@camlive.com" method="post" enctype="text/plain">
+          <div class="form-group">
+            <label for="name">Nom</label>
+            <input type="text" id="name" name="name" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" class="form-control" required>
+          </div>
+          <div class="form-group">
+            <label for="message">Message</label>
+            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Envoyer</button>
+        </form>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-dark text-white">
+      <div class="container">
+        <div class="row">
+          <div class="col-md-4">
+            <h5>Contact</h5>
+            <p>Email: support@camlive.com</p>
+            <p>Téléphone: +123 456 7890</p>
+            <p>Adresse: 123 Rue Exemple, Ville, Pays</p>
+          </div>
+          <div class="col-md-4">
+            <h5>Suivez-nous</h5>
+            <a href="https://facebook.com" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+            <a href="https://twitter.com" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+            <a href="https://linkedin.com" class="text-white me-2"><i class="fab fa-linkedin-in"></i></a>
+            <a href="https://instagram.com" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+          </div>
+          <div class="col-md-4">
+            <h5>Newsletter</h5>
+            <form action="mailto:newsletter@camlive.com" method="post" enctype="text/plain">
+              <div class="form-group">
+                <label for="newsletter-email">Inscrivez-vous à notre newsletter</label>
+                <input type="email" id="newsletter-email" name="newsletter-email" class="form-control" placeholder="Votre email" required>
+              </div>
+              <button type="submit" class="btn btn-primary">S'abonner</button>
+            </form>
+          </div>
+        </div>
+        <div class="text-center mt-3">
+          <p>© 2024 CamLive. Tous droits réservés.</p>
+        </div>
+      </div>
+    </footer>
+
+    </main>
+  </body>
+</html>
