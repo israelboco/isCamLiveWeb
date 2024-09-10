@@ -25,9 +25,16 @@ class App:
         def home():
             return render_template('index.html')  # Page d'accueil
 
-        @self.app.route('/abonnement')
-        def abonnement():
-            return render_template('abonnement.html')  # Page d'abonnement
+        @self.app.route('/indes')
+        def indes():
+            return render_template('indes.html')  # Page d'accueil
+
+        @self.app.route('/tarifs')
+        def tarifs():
+            return render_template('tarifs.html')  # Page d'abonnement
+        @self.app.route('/inscription')
+        def inscription():
+            return render_template('inscription.html')  # Page d'abonnement
 
         @self.app.route('/contact')
         def contact():
@@ -44,6 +51,7 @@ class App:
                 flash('Abonnement réussi ! Merci de vous être abonné.')
                 return redirect(url_for('home'))
             return render_template('view/abonnement.html')
+        
 
     def setup_socketio(self):
         @self.socketio.on('connect')

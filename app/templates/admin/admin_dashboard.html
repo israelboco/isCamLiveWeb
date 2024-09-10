@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard Admin - CamLive</title>
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <h1 class="my-4">Tableau de Bord Admin</h1>
+        
+        <h2>Abonnements</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Nom</th>
+                    <th>Prix</th>
+                    <th>Nombre de sessions</th>
+                    <th>Nombre de caméras</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for abonnement in abonnements %}
+                <tr>
+                    <td>{{ abonnement.name }}</td>
+                    <td>{{ abonnement.price }}$</td>
+                    <td>{{ abonnement.max_sessions_per_user }}</td>
+                    <td>{{ abonnement.max_cameras_per_session }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <h2>Utilisateurs</h2>
+        <table class="table">
+            <thead>
+                <tr>
+                    <th>Email</th>
+                    <th>Abonnement</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for utilisateur in utilisateurs %}
+                <tr>
+                    <td>{{ utilisateur.email }}</td>
+                    <td>{{ utilisateur.subscription_id }}</td>
+                </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+
+        <!-- Ajouter plus de sections pour Sessions et Caméras -->
+    </div>
+</body>
+</html>

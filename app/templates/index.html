@@ -20,24 +20,32 @@
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
   </head>
   <body>
-    <!-- Header -->
-    <header>
-      <nav>
-        <ul>
-          <li><a href="#">Accueil</a></li>
-          <li><a href="#features">Fonctionnalités</a></li>
-          <li><a href="#pricing">Tarif</a></li>
-          <li><a href="#testimonials">Témoignages</a></li>
-          <li><a href="#contact">Contact</a></li>
-        </ul>
+
+    <!-- Section Hero -->
+    <header class="hero-section">
+      <nav class="navbar">
+          <div class="logo">CamLive</div>
+          <ul class="menu">
+              <li><a href="index">Accueil</a></li>
+              <li><a href="tarifs">Tarifs</a></li>
+              <li><a href="inscription">S'inscrire</a></li>
+              <li><a href="#features">Solutions</a></li>
+              <li><a href="#contact">Contact</a></li>
+          </ul>
+          <button class="btn">Commencez gratuitement</button>
       </nav>
-    </header>
+      <div class="hero-content">
+          <h1>Créez votre propre solution de gestion de caméras intelligente</h1>
+          <p>Diffusion automatique et détection intelligente pour la sécurité et les événements en 3 clics simples</p>
+          <button class="btn">Essayez-le gratuitement</button>
+      </div>
+  </header>
 
     <!-- Main Content -->
     <main>
       <!-- Introduction -->
-      <section class="section section-md bg-default section-top-image">
-        <div class="container">
+      <section class="section section-md bg-default section-top-image steps-section">
+        <div class="container steps-content">
           <div class="row">
             <div class="col-md-6">
               <h1>CamLive - Gestion Automatique des Caméras</h1>
@@ -130,7 +138,7 @@
       </section>
 
       <!-- Pricing -->
-      <section id="pricing" class="section section-md bg-default">
+      <!-- <section id="pricing" class="section section-md bg-default">
         <div class="container">
           <h2>Tarif</h2>
           <div class="row">
@@ -174,11 +182,11 @@
             </div>
           </div>
         </div>
-      </section>
+      </section> -->
 
 
      <!-- Testimonials -->
-    <section id="testimonials" class="section section-md bg-default">
+    <!-- <section id="testimonials" class="section section-md bg-default">
       <div class="container">
         <h2>Témoignages</h2>
         <div class="row row-30 justify-content-center">
@@ -220,7 +228,39 @@
           </div>
         </div>
       </div>
+    </section> -->
+    <!-- Section Témoignages -->
+    <section class="testimonials-section">
+      <h2>Ils nous font confiance</h2>
+      <div class="testimonial-card">
+          <p>"CamLive a révolutionné la manière dont nous gérons la sécurité de notre événement. Facile à utiliser et extrêmement fiable."</p>
+          <div class="testimonial-author">
+              <img src="avatar.png" alt="Client Avatar">
+              <span>Jean Dupont, Sécurité 360</span>
+          </div>
+      </div>
     </section>
+
+    <!-- Section FAQ -->
+    <section class="faq-section">
+        <h2>Questions fréquemment posées</h2>
+        <div class="faq-item">
+            <h3>
+              Qu'est-ce que CamLive ?
+              <span class="chevron">&#9660;</span>
+            </h3>
+            <p class="faq-content">CamLive est une solution de gestion de caméras intelligente pour les événements et la sécurité.</p>
+        </div>
+        <div class="faq-item">
+            <h3>
+              Quels sont les prix ?
+              <span class="chevron">&#9660;</span>
+            </h3>
+            <p class="faq-content">Consultez nos différentes formules tarifaires sur la page Tarifs.</p>
+        </div>
+        <!-- Ajoutez plus de FAQ selon les besoins -->
+    </section>
+    
     <!-- Contact -->
     <section id="contact" class="section section-md bg-default">
       <div class="container">
@@ -228,20 +268,20 @@
         <form action="mailto:support@camlive.com" method="post" enctype="text/plain">
           <div class="form-group">
             <label for="name">Nom</label>
-            <input type="text" id="name" name="name" class="form-control" required>
+            <input type="text" id="name" name="name" class="form-control" placeholder="Votre nom" required>
           </div>
           <div class="form-group">
             <label for="email">Email</label>
-            <input type="email" id="email" name="email" class="form-control" required>
+            <input type="email" id="email" name="email" class="form-control" placeholder="Votre email" required>
           </div>
           <div class="form-group">
             <label for="message">Message</label>
-            <textarea id="message" name="message" class="form-control" rows="5" required></textarea>
+            <textarea id="message" name="message" class="form-control" rows="5" placeholder="Votre message" required></textarea>
           </div>
           <button type="submit" class="btn btn-primary">Envoyer</button>
         </form>
       </div>
-    </section>
+    </section>    
 
     <!-- Footer -->
     <footer class="bg-dark text-white">
@@ -278,5 +318,17 @@
     </footer>
 
     </main>
+    <script type="text/javascript">
+        document.querySelectorAll('.faq-item').forEach(item => {
+          item.addEventListener('click', () => {
+            // Toggle the 'open' class on the FAQ item
+            item.classList.toggle('open');
+            
+            // Show/Hide the content
+            const content = item.querySelector('.faq-content');
+            content.style.display = content.style.display === 'block' ? 'none' : 'block';
+          });
+        });
+    </script>
   </body>
 </html>

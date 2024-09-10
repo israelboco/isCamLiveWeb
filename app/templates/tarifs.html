@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>CamLive - Tarifs</title>
+</head>
+
+<body>
+    <!-- Section Hero -->
+    <header class="hero-section">
+        <nav class="navbar">
+            <div class="logo">CamLive</div>
+            <ul class="menu">
+                <li><a href="index">Accueil</a></li>
+                <li><a href="tarifs">Tarifs</a></li>
+                <li><a href="inscription">S'inscrire</a></li>
+                <li><a href="#">Solutions</a></li>
+                <li><a href="#">Contact</a></li>
+            </ul>
+            <button class="btn">Commencez gratuitement</button>
+        </nav>
+        <div class="hero-content">
+            <h1>Créez votre propre solution de gestion de caméras intelligente</h1>
+            <p>Diffusion automatique et détection intelligente pour la sécurité et les événements en 3 clics simples</p>
+            <button class="btn">Essayez-le gratuitement</button>
+        </div>
+    </header>
+
+    <!-- Section Tarifs -->
+    <section class="pricing-section">
+        <h2>Nos Tarifs</h2>
+        <div class="pricing-card">
+            <h3>Basic - 50$/mois</h3>
+            <ul>
+                <li>Recherche d'objet</li>
+                <li>Recherche faciale</li>
+                <li>Diffusion de la caméra principale</li>
+                <li>Nombre de caméras: 5</li>
+                <li>Nombre de sessions par utilisateur: 3</li>
+            </ul>
+        </div>
+        <div class="pricing-card">
+            <h3>Pro - 70$/mois</h3>
+            <ul>
+                <li>Inclus toutes les fonctionnalités du plan Basic</li>
+                <li>Nombre de caméras: 10</li>
+                <li>Nombre de sessions par utilisateur: 10</li>
+                <li>Diffusion sécurisée de la caméra principale par token</li>
+            </ul>
+        </div>
+        <div class="pricing-card">
+            <h3>Entreprise - 100$/mois</h3>
+            <ul>
+                <li>Inclut toutes les fonctionnalités existantes</li>
+                <li>Plus de fonctionnalités sous contrat personnalisé</li>
+            </ul>
+        </div>
+    </section>
+</body>
+
+</html>
