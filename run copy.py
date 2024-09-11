@@ -1,99 +1,59 @@
-from flask import Flask, render_template, request, redirect, url_for, flash
-from flask_socketio import SocketIO, emit
-import cv2
-import numpy as np
-import sqlite3
+from flask import Flask, render_template, redirect, url_for, request, flash
+from flask_login import LoginManager, UserMixin, login_user, logout_user, login_required, current_user
 
-class App:
-    def __init__(self):
-        self.app = Flask(__name__)
-        self.app.config['SECRET_KEY'] = 'secret!'
-        self.socketio = SocketIO(self.app)
-        self.init_db()
-        self.setup_routes()
-        self.setup_socketio()
+app = Flask(__name__)
+app.secret_key = 'your_secret_key'  # Changer avec votre propre clé secrète
 
-    def init_db(self):
-        conn = sqlite3.connect('clients.db')
-        c = conn.cursor()
-        c.execute('''CREATE TABLE IF NOT EXISTS clients (id INTEGER PRIMARY KEY, client_id TEXT)''')
-        conn.commit()
-        conn.close()
+# Initialiser Flask-Login
+login_manager = LoginManager()
+login_manager.init_app(app)
+login_manager.login_view = 'login'  # Vue de redirection si non connecté
 
-    def setup_routes(self):
-        @self.app.route('/')
-        def home():
-            return render_template('index.html')  # Page d'accueil
+# Exemple de base de données d'utilisateurs en mémoire (à remplacer par une vraie base de données)
+users = {'user1': {'password': 'password1'}, 'user2': {'password': 'password2'}}
 
-        @self.app.route('/indes')
-        def indes():
-            return render_template('indes.html')  # Page d'accueil
+# Classe User
+class User(UserMixin):
+    def __init__(self, id):
+        self.id = id
 
-        @self.app.route('/tarifs')
-        def tarifs():
-            return render_template('tarifs.html')  # Page d'abonnement
-        @self.app.route('/inscription')
-        def inscription():
-            return render_template('inscription.html')  # Page d'abonnement
+    def __repr__(self):
+        return f'<User: {self.id}>'
 
-        @self.app.route('/contact')
-        def contact():
-            return render_template('contact.html')  # Page contact
-        @self.app.route('/socket')
-        def socket():
-            return render_template('socket.html')
+@login_manager.user_loader
+def load_user(user_id):
+    if user_id in users:
+        return User(user_id)
+    return None
 
-        @self.app.route('/abonnement/save', methods=['POST'])
-        def save_abonnement():
-            if request.method == 'POST':
-                email = request.form['email']
-                # Sauvegarder l'email dans la base de données ou envoyer un email de confirmation
-                flash('Abonnement réussi ! Merci de vous être abonné.')
-                return redirect(url_for('home'))
-            return render_template('view/abonnement.html')
-        
+# Route de login
+@app.route('/login', methods=['GET', 'POST'])
+def login():
+    if request.method == 'POST':
+        username = request.form['username']
+        password = request.form['password']
+        if username in users and users[username]['password'] == password:
+            user = User(username)
+            login_user(user)
+            flash('Vous êtes connecté avec succès.', 'success')
+            return redirect(url_for('dashboard'))
+        else:
+            flash('Nom d\'utilisateur ou mot de passe incorrect.', 'danger')
+    return render_template('login.html')
 
-    def setup_socketio(self):
-        @self.socketio.on('connect')
-        def handle_connect():
-            client_id = request.sid
-            conn = sqlite3.connect('clients.db')
-            c = conn.cursor()
-            c.execute("INSERT INTO clients (client_id) VALUES (?)", (client_id,))
-            conn.commit()
-            conn.close()
-            print('Client connected:', client_id)
+# Route de dashboard (page protégée)
+@app.route('/dashboard')
+@login_required
+def dashboard():
+    return render_template('dashboard.html', name=current_user.id)
 
-        @self.socketio.on('disconnect')
-        def handle_disconnect():
-            client_id = request.sid
-            conn = sqlite3.connect('clients.db')
-            c = conn.cursor()
-            c.execute("DELETE FROM clients WHERE client_id=?", (client_id,))
-            conn.commit()
-            conn.close()
-            print('Client disconnected:', client_id)
+# Route de déconnexion
+@app.route('/logout')
+@login_required
+def logout():
+    logout_user()
+    flash('Vous avez été déconnecté.', 'info')
+    return redirect(url_for('login'))
 
-        @self.socketio.on('image')
-        def handle_image(data):
-            # Convertir les données d'image en format utilisable par OpenCV
-            nparr = np.frombuffer(data, np.uint8)
-            img = cv2.imdecode(nparr, cv2.IMREAD_COLOR)
-            
-            # Analyse de l'image avec OpenCV (exemple de détection de mouvement)
-            gray = cv2.cvtColor(img, cv2.COLOR_BGR2GRAY)
-            gray = cv2.GaussianBlur(gray, (21, 21), 0)
-            print('Image analysée')
-            # Envoyer une notification au client
-            emit('notification', {'message': 'Image analysée'})
-
-        @self.socketio.event
-        def connect_error(data):
-            print("Connection failed:", data)
-
-    def run(self):
-        self.socketio.run(self.app, debug=True)
-
-if __name__ == '__main__':
-    app_instance = App()
-    app_instance.run()
+if __name__ == "__main__":
+    app.run(debug=True)

@@ -27,12 +27,7 @@ def create_app():
     with app.app_context():
         from .routes import setup_routes
         setup_routes(app)
+        # Initialisation de la base de données
+        db.create_all() 
 
     return app
-
-def init_db():
-    conn = sqlite3.connect('clients.db')
-    c = conn.cursor()
-    c.execute('''CREATE TABLE IF NOT EXISTS clients (id INTEGER PRIMARY KEY, client_id TEXT)''')
-    conn.commit()
-    conn.close()

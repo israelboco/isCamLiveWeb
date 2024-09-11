@@ -1,14 +1,22 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>CamLive Admin Dashboard</title>
-    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" rel="stylesheet">
-</head>
-<body>
-    <div class="container">
-        <h1 class="my-4">Bienvenue sur le Dashboard Admin de CamLive</h1>
-        <a href="admin/admin_dashboard" class="btn btn-primary">Aller au Tableau de Bord</a>
+{% extends 'base.html' %}
+
+{% block content %}
+    <div>
+        <h2>Bienvenue dans le Dashboard</h2>
+        {% if menu %}
+            <p>Vous avez sélectionné le menu: {{ menu }}</p>
+            <!-- Ajouter le contenu dynamique en fonction du menu ici -->
+            {% if menu == "utilisateur" %}
+                <h3>Liste des Utilisateurs</h3>
+                <!-- Ajouter la table ou le contenu de l'utilisateur -->
+            {% elif menu == "abonnement" %}
+                <h3>Liste des Abonnements</h3>
+                <!-- Ajouter la table ou le contenu d'abonnement -->
+            {% else %}
+                <p>Contenu du menu {{ menu }} est en cours de construction.</p>
+            {% endif %}
+        {% else %}
+            <p>Sélectionnez un menu pour afficher son contenu.</p>
+        {% endif %}
     </div>
-</body>
-</html>
+{% endblock %}
